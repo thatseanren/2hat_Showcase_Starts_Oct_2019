@@ -1,0 +1,138 @@
+.react-autosuggest__container {
+  position: relative;
+  left: 52px;
+  top: -14px;
+  border: hidden;
+}
+::placeholder {
+  /* Firefox, Chrome, Opera */
+  color: rgba(0, 0, 0, 0.87);
+}
+.react-autosuggest__input {
+  width: 352px;
+  height: 24px;
+  /* padding: 10px 20px; */
+  line-height: 1.5;
+  font-family: Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  font-family: Roboto;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.15px;
+  color: rgba(0, 0, 0, 0.87);
+  border: 1px;
+  border-radius: 4px;
+}
+
+.react-autosuggest__input--focused {
+  outline: none;
+}
+
+.react-autosuggest__input--open {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.react-autosuggest__suggestions-container {
+  display: none;
+  width: 420px;
+  height: 628px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 4px 5px 0 rgba(0, 0, 0, 0.14);
+  background-color: #fafafa;
+}
+#react-autowhatever-1 > div:nth-of-type(2) {
+  position: relative;
+  top: 44px;
+}
+.react-autosuggest__suggestions-container--open {
+  display: block;
+  position: absolute;
+  top: 43px;
+  left: -52px;
+  width: 420px;
+  border: 1px solid #aaa;
+  background-color: #fff;
+  font-family: Helvetica, sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  z-index: 2;
+  overflow: scroll;
+}
+.react-autosuggest__section-container--first {
+  display: inline-block;
+}
+/* title <Div> Display setting  Both Common and Branded*/
+.react-autosuggest__section-title {
+  display: inline-block;
+  position: relative;
+  top: 12px;
+  left: 16px;
+  width: 388px;
+  height: 16px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: 2px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.react-autosuggest__suggestions-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  width: 420px;
+  height: 74px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: 0.15px;
+  color: rgba(0, 0, 0, 0.87);
+  position: relative;
+  top: 18px;
+}
+
+.react-autosuggest__suggestion {
+  cursor: pointer;
+  /* padding: 10px 20px; */
+  display: inline-block;
+  /* FIXED single suggestion style  */
+  height: 72px;
+  width: 420px;
+}
+.react-autosuggest__suggestion > div > span {
+  display: inline-block;
+  width: 326px;
+  height: 24px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: 0.15px;
+  color: rgba(0, 0, 0, 0.87);
+  padding-top: 24px;
+}
+/* food picture size rule */
+.react-autosuggest__suggestion > div > img {
+  width: 40px;
+  height: 40px;
+  width: 40px;
+  height: 40px;
+  padding: 16px;
+  float: left;
+}
+.react-autosuggest__suggestion--highlighted {
+  background-color: #ddd;
+}
