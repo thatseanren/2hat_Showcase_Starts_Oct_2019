@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import MealDetail from "./mealDetail";
+import { Avatar } from "@material-ui/core";
 const style = {
   profile: {
     width: "320px",
@@ -34,14 +35,14 @@ const style = {
     position: "relative",
     top: "8px",
     left: "8px",
-    "text-align": "center",
-    "font-family": "Roboto",
-    "font-size": "20px",
-    "font-weight": 500,
-    "font-stretch": "normal",
-    "font-style": "normal",
-    "line-height": "normal",
-    "letter-spacing": "0.25px",
+    textAlign: "center",
+    fontFamily: "Roboto",
+    fontSize: "20px",
+    fontWeight: 500,
+    fontStretch: "normal",
+    fontStyle: "normal",
+    lineHeight: "normal",
+    letterSpacing: "0.25px",
     color: "#ffffff"
   },
   // styles for unit text in weight and height element eg. 'kg' & 'cm'
@@ -53,14 +54,14 @@ const style = {
     position: "relative",
     top: "8px",
     left: "8px",
-    "text-align": "center",
-    "font-family": "Roboto",
-    "font-size": "12px",
-    "font-weight": "normal",
-    "font-stretch": "normal",
-    "font-style": "normal",
-    "line-height": "1.33",
-    "letter-spacing": "0.4px",
+    textAlign: "center",
+    fontFamily: "Roboto",
+    fontSize: "12px",
+    fontWeight: "normal",
+    fontStretch: "normal",
+    fontStyle: "normal",
+    lineHeight: "1.33",
+    letterSpecing: "0.4px",
     color: "#ffffff"
   },
   photo: {
@@ -68,7 +69,7 @@ const style = {
     height: "96px",
     display: "inline-block",
     borderRadius: "50%",
-    backgroundColor: "green",
+    // backgroundColor: "green",
     position: "relative",
     top: "24px",
     left: "56px"
@@ -98,7 +99,7 @@ const style = {
     width: "144px",
     height: "28px",
     position: "relative",
-    top: "55px",
+    top: "56px",
     left: "16px",
     fontFamily: "Roboto",
     fontSize: "24px",
@@ -111,7 +112,7 @@ const style = {
     height: "28px",
     position: "relative",
     left: "16px",
-    top: "55px",
+    top: "56px",
     display: "inline-block",
     textAlign: "right",
     fontFamily: "Roboto",
@@ -122,9 +123,11 @@ const style = {
   // mutual styles used in plain text 'Consumed' and 'Daily Goal'
   ConsDaily: {
     fontFamily: "Roboto",
-    position: "relative",
-    top: "53px",
+    position: "absolute",
+    top: "373px",
     display: "inline-block",
+    width: 144,
+    height: 16,
     fontSize: "12px",
     letterSpacing: "0.4px",
     color: "rgba(0, 0, 0, 0.6)",
@@ -132,29 +135,40 @@ const style = {
   },
   //Consumed style
   textfield1: {
-    left: "15px",
+    left: "16px",
     textAlign: "left"
   },
   //Daily Goal style
   textfield2: {
-    left: "184px",
+    left: "160px",
     textAlign: "right"
   },
   progressBar: {
-    position: "relative",
+    position: "absolute",
     display: "inline-block",
-    top: "59px",
-    left: "16px",
+    top: "405px",
+    left: "24px",
     width: "288px",
     height: "4px",
+    opacity: "0.24",
+    backgroundColor: "#6200ee"
+  },
+  progressBar_top: {
+    position: "absolute",
+    display: "inline-block",
+    top: "405px",
+    left: "24px",
+    height: "4px",
+    // opacity:'0.24',
     backgroundColor: "#6200ee"
   },
   progressPercentage: {
+    // display:'block',
     width: "56px",
     height: "24px",
-    position: "relative",
-    left: "273px",
-    top: "60px",
+    position: "absolute",
+    left: "288px",
+    top: "413px",
     textAlign: "left",
     fontFamily: "Roboto",
     lineHeight: "1.71",
@@ -168,60 +182,128 @@ const style = {
   }
 };
 export default class Profile extends React.Component {
+  getFoodObjectByMealType() {
+    let mealDetail = { breakfast: [], lunch: [], dinner: [], snack: [] };
+    this.props.diet.diet.data_points[this.props.diet.date].intake_list.forEach(
+      element => {
+        mealDetail[element.meal_type].push(element);
+      }
+    );
+    return mealDetail;
+  }
+  getConsumed() {
+    const data = this.getFoodObjectByMealType();
+    let breakfast = 0;
+    let lunch = 0;
+    let dinner = 0;
+    let snacks = 0;
+    data.breakfast.forEach(element => {
+      breakfast += element.nf_calories * element.serving_qty;
+    });
+    data.lunch.forEach(element => {
+      lunch += element.nf_calories * element.serving_qty;
+    });
+    data.dinner.forEach(element => {
+      dinner += element.nf_calories * element.serving_qty;
+    });
+    data.snack.forEach(element => {
+      snacks += element.nf_calories * element.serving_qty;
+    });
+    return parseInt((breakfast + lunch + dinner + snacks),10);
+  }
+  getProgressBarPercentage() {
+    return Math.floor(
+      (this.getConsumed() / this.props.diet.diet.daily_goal) * 100
+    );
+  }
   render() {
     return (
       <Fragment>
         <div className="classes.profile" class="profile" style={style.profile}>
           <div
-            className="{classes.weight}"
+
+            class = 'weight'
             style={Object.assign({}, style.weight, style.heightWeight)}
           >
             <div style={style.numberInCircle}>{57}</div>
             <div style={style.unitInCircle}>{"kg"}</div>
           </div>
-          <div className="{classes.photo}" style={style.photo} />
+          {/* <div className="{classes.photo}" style={style.photo} /> */}
+          <Avatar
+            alt="Sean"
+            src="./static/istockphoto-476085198-612x612.jpg"
+            style={style.photo}
+          />
           <div
-            className="{classes.height}"
+
+            class = 'height'
             style={Object.assign({}, style.height, style.heightWeight)}
           >
             <div style={style.numberInCircle}>{133}</div>
             <div style={style.unitInCircle}>{"cm"}</div>
           </div>
           <div className="NameField" style={style.NameField}>
-            {this.props.diet.first_name} {this.props.diet.last_name}
+            {this.props.diet.diet.first_name} {this.props.diet.diet.last_name}
           </div>
-          <div className="{classes.Seperate}" style={style.Seperate} />
-          <div className="{classes.consumed}" style={style.consumed}>
-            {this.props.diet.consumed}
+          <div class='Seperate' style={style.Seperate} />
+          <div className="{classes.consumed}"  class = 'consumed' style={style.consumed}>
+            {this.getConsumed()}
             {" cal"}
           </div>
-          <div className="{classes.consumed}" style={style.dailyGoal}>
-            {this.props.diet.daily_goal}
+          <div className="{classes.consumed}" class = 'dailygoal' style={style.dailyGoal}>
+            {this.props.diet.diet.daily_goal}
             {" cal"}
           </div>
           <div
             className="{classes.textfield1}"
+            class='consumed_text'
             style={{ ...style.textfield1, ...style.ConsDaily }}
           >
-            Consumed
+            consumed
           </div>
           <div
             className="{classes.textfield2}"
+            class = 'daily_goal_text'
             style={{ ...style.textfield2, ...style.ConsDaily }}
           >
-            Daily Goal
+            daily goal
           </div>
-          <div className="{classes.progressBar}" style={style.progressBar} />
-          <div className="progressPercentage" style={style.progressPercentage}>
-            {Math.floor(
-              (this.props.diet.consumed / this.props.diet.daily_goal) * 100
-            )}
+          <div className="{classes.progressBar}" class = 'progressBar_base' style={style.progressBar} />
+          <div
+            className="{classes.progressBar}"
+            class = 'progressBar'
+            style={{
+              ...style.progressBar_top,
+              ...{
+                width:
+                  this.getProgressBarPercentage() > 100
+                    ? 288
+                    : this.getProgressBarPercentage() * 2.88
+              }
+            }}
+          />
+          <div
+            className="progressPercentage"
+            class = 'progressPercent'
+            style={{
+              ...style.progressPercentage,
+              ...{
+                left:
+                  this.getProgressBarPercentage() < 15
+                    ? this.getProgressBarPercentage() * 2.88 + 20
+                    : this.getProgressBarPercentage() > 100
+                    ? 288
+                    : this.getProgressBarPercentage() * 2.88
+              }
+            }}
+          >
+            {this.getProgressBarPercentage()}
             {"%"}
           </div>
-          <MealDetail meal_calories={123} meal_type={"Breakfast"} />
-          <MealDetail meal_calories={570} meal_type={"Lunch"} />
-          <MealDetail meal_calories={453} meal_type={"Dinner"} />
-          <MealDetail meal_calories={113} meal_type={"Snack"} />
+          <MealDetail data={this.getFoodObjectByMealType()} />
+          {/* <MealDetail meal_calories={lunch} meal_type={"Lunch"} />
+          <MealDetail meal_calories={dinner} meal_type={"Dinner"} />
+          <MealDetail meal_calories={snacks} meal_type={"Snack"} /> */}
         </div>
       </Fragment>
     );

@@ -2,7 +2,7 @@ import React from "react";
 import { ThemeProvider } from "@material-ui/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-
+import IconButton from "@material-ui/core/IconButton";
 const theme = createMuiTheme({
   typography: {
     h4: {
@@ -15,6 +15,13 @@ const theme = createMuiTheme({
   }
 });
 export default class DateDisplay extends React.Component {
+  constructor(props) {
+    super(props);
+    this.showpreviousDay = this.showpreviousDay.bind(this);
+  }
+  showpreviousDay(timeArrow) {
+    this.props.Increament(timeArrow);
+  }
   render() {
     return (
       <ThemeProvider theme={theme}>
@@ -32,7 +39,14 @@ export default class DateDisplay extends React.Component {
                 color: "white"
               }}
             >
-              <i class="material-icons"> keyboard_arrow_left</i>
+              <IconButton
+                aria-label="delete"
+                size="small"
+                style={{ color: "white" }}
+                onClick={this.showpreviousDay.bind(this, "backwards")}
+              >
+                <i class="material-icons"> keyboard_arrow_left</i>
+              </IconButton>
             </div>
             <div
               style={{
@@ -49,7 +63,11 @@ export default class DateDisplay extends React.Component {
               {" "}
               <Typography align="center" variant="h4">
                 {" "}
-                {this.props.day}{" "}
+                {this.props.day === 0
+                  ? "Today"
+                  : this.props.day === 1
+                  ? "Yestoday"
+                  : "Day Before yestoday"}{" "}
               </Typography>
             </div>
             <div
@@ -62,7 +80,14 @@ export default class DateDisplay extends React.Component {
                 color: "white"
               }}
             >
-              <i class="material-icons" >keyboard_arrow_right</i>
+              <IconButton
+                aria-label="delete"
+                size="small"
+                style={{ color: "white" }}
+                onClick={this.showpreviousDay.bind(this, "forwards")}
+              >
+                <i class="material-icons">keyboard_arrow_right</i>{" "}
+              </IconButton>
             </div>
           </div>
         </div>
@@ -70,33 +95,3 @@ export default class DateDisplay extends React.Component {
     );
   }
 }
-
-// class DateDisplay extends React.Component{
-//     render(){
-//       return (
-//        <ThemeProvider theme = {theme}>
-//           <div className={classes.DateWrapper}>
-//             <div className={classes.DateTab}>
-//               <div className={classes.leftIcon}>
-//                 <i class="material-icons"> keyboard_arrow_left</i>
-//               </div>
-//               <div className={classes.Date}>
-//                 {" "}
-//                 <Typography
-//                   align="center"
-//                   variant="h4"
-//                   className={classes.DateText}
-//                 >
-//                   {" "}
-//                   {this.props.day}{" "}
-//                 </Typography>
-//               </div>
-//               <div className={classes.rightIcon}>
-//                 <i class="material-icons">keyboard_arrow_right</i>
-//               </div>
-//             </div>
-//           </div>
-//        </ThemeProvider>
-//       )
-//     }
-// }

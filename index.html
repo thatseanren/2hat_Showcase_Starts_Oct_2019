@@ -5,11 +5,171 @@
     content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
   />
   <head>
+    <style>
+      body {
+        margin: 0;
+      }
+      .secondForm > div > div {
+        padding-top: 12px;
+        padding-left: 16px;
+        padding-right: 52px;
+        padding-bottom: 12px;
+      }
+      @media screen and (max-width: 320px) {
+        .searchBar {
+          height: 144px !important;
+          width: 320px !important;
+        }
+        .search {
+          margin-top: 7.5px !important;
+          margin-left: 8px !important;
+          width: 304px !important;
+          height: 48px !important;
+        }
+        .SearchDetail_Container {
+          left: 2.5% !important;
+          top: 18% !important;
+        }
+        .search + div {
+          margin-top: 104.5px !important;
+        }
+        .search + div > div {
+          width: 320px !important;
+        }
+        .search + div > div > div {
+          position: static !important;
+          margin-left: 12px !important;
+        }
+        .search + div > div > div + div {
+          height: 24px !important;
+          width: 232px !important;
+          margin-right: 8px !important;
+          margin-left: 8px !important;
+        }
+        .search + div > div > div + div > h4 {
+          font-size: 20px !important;
+          font-family: Roboto !important;
+          font-size: 20px !important;
+          font-weight: 500 !important;
+          font-stretch: normal !important;
+          font-style: normal !important;
+          line-height: normal !important;
+          letter-spacing: 0.25px !important;
+          text-align: center !important;
+          color: rgba(0, 0, 0, 0.87) !important;
+        }
+        .search + div > div > div > button {
+          color: #6200ee !important;
+        }
+
+        .search + div > div > div + div + div {
+          width: 24px !important;
+          height: 24px !important;
+          margin-left: 0px !important;
+        }
+        /* //style Formcontrol-1 using global classname */
+        .MuiAvatar-root {
+          width: 56px !important;
+          height: 56px !important;
+          position: absolute !important;
+          top: 72px !important;
+          left: 8px !important;
+        }
+        .profile {
+          background-color: white !important;
+        }
+        .profile > .weight {
+          left: 192px !important;
+          top: 72px !important;
+          position: absolute !important;
+        }
+        .profile > .height {
+          top: 72px !important;
+          position: absolute !important;
+          left: 256px !important;
+        }
+        .NameField {
+          position: absolute !important;
+          top: 88px !important;
+          left: 76px !important;
+          font-size: 20px !important;
+          text-align: left !important;
+          color: white !important;
+          overflow: hidden !important;
+          width: 97px !important;
+          height: 24px !important;
+        }
+        .consumed,
+        .dailygoal {
+          position: absolute !important;
+          top: 208px !important;
+        }
+        .consumed,
+        .consumed_text {
+          left: 16px !important;
+        }
+        .dailygoal,
+        .daily_goal_text {
+          left: 160px !important;
+        }
+
+        .consumed_text,
+        .daily_goal_text {
+          position: absolute !important;
+          top: 236px !important;
+        }
+        .Seperate {
+          display: none;
+        }
+        .mealDetail {
+          top: 326px !important;
+        }
+        .progressBar_base,
+        .progressBar {
+          top: 268px !important;
+          left: 16px !important;
+        }
+        .progressPercent {
+          top: 276px !important;
+        }
+        .profile + div {
+          position: absolute !important;
+          top: 374px !important;
+          left: 0px !important;
+          width: 320px !important;
+          height: 288px !important;
+        }
+        .servingSize,
+        .foodName {
+          width: 160px !important;
+          overflow: hidden !important;
+        }
+        .foodInfo {
+          width: 320px !important;
+        }
+        .meal_type + div {
+          width: 248px !important;
+        }
+        .secondWrapper + .MuiButtonBase-root {
+          left: 248px !important;
+        }
+        .react-autosuggest__suggestions-container--open {
+          width: 304px !important;
+          left: 8px !important;
+          top: 64px !important;
+          max-height: 628px !important;
+        }
+        .searchIcon {
+          top: 18.5px !important;
+          left: 20px !important;
+        }
+      }
+    </style>
     <title>Parcel Sandbox</title>
     <meta charset="UTF-8" />
   </head>
 
-  <body >
+  <body>
     <!-- Fonts to support Material Design -->
     <link
       rel="stylesheet"
@@ -20,7 +180,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
     />
-    <link rel="stylesheet" src="src/AutoSuggests.css">
+    <link rel="stylesheet" src="src/AutoSuggests.css" />
     <div id="app"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="src/index.js"></script>

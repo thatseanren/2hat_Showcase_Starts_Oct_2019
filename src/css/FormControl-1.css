@@ -1,0 +1,25 @@
+.MuiFormLabel-root.MuiInputLabel-shrink {
+  color: #6200ee;
+}
+.MuiFilledInput-underline.MuiFilledInput-underline:before {
+  border-bottom: 1px solid #3b00dd;
+}
+
+.MuiFilledInput-underline.MuiFilledInput-underline:after {
+  border-bottom: 2px solid #3b00dd;
+}
+.MuiFilledInput-underline.MuiFilledInput-underline:hover:before {
+  border-bottom: 1px solid #3b00dd;
+}
+.MuiFormHelperText-filled {
+  color: #6200ee;
+}
+.MuiFilledInput-underline.MuiFilledInput-underline:nth-child(1):before{
+  border-bottom: none;
+}
+.MuiFilledInput-underline.MuiFilledInput-underline:nth-child(1):after {
+  border-bottom: none;
+}
+.MuiFilledInput-underline.MuiFilledInput-underline:nth-child(1):hover:before {
+  border-bottom: none;
+}
